@@ -1,0 +1,393 @@
+/* global */
+*, 
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+html {
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+
+
+body {
+    background-color: rgb(24, 24, 24);
+    line-height: 1.6;
+    color: rgb(175, 175, 175);
+    letter-spacing: 1.5px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+p {
+    max-width: 700px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    position: relative;
+    transition: color .3s linear;
+    border-radius: 10px;
+    overflow: hidden;
+    color: rgb(13, 104, 104);
+}
+
+a::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background-color: rgb(13, 104, 104);
+    transition: height .3s linear;
+    z-index: -1;
+}
+
+
+
+a:hover,
+a:focus {
+    color: rgb(250, 235, 153);
+}
+a:hover::after,
+a:focus::after {
+    height: 100%;
+}
+
+p:not(:last-child) {
+    margin-bottom: 10px;
+}
+
+
+
+
+
+
+figcaption {
+    color: rgb(250, 235, 153);
+    font-style: italic;
+    font-size: 14px;
+    text-align: center;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 15px;
+    color: #fff;
+    font-weight: 300;
+    text-transform: uppercase;
+}
+
+.container {
+    width: 100%;
+    padding: 0 15px;
+    margin: 0 auto;
+}
+
+.section {
+    padding: 40px 0;
+}
+
+.section-img {
+    width: 100%;
+    max-width: 450px;
+    margin: 0 auto 10px ;
+    border-radius: 10px;
+    box-shadow: 5px 5px 15px 5px rgba(13, 104, 104, .3);;
+}
+
+
+
+.flex-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+
+.img-container {
+    order: 0;
+    perspective: 800px;
+    flex: 0 1 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.img-reverse {
+    order: 0;
+}
+
+
+
+.img-container figure,
+.img-container > img {
+    transform: rotateY(0);
+}
+
+
+
+/* header */
+
+.header {
+    padding: 10px 0;
+    background-color: rgb(13, 104, 104);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+.header .container {
+    display: flex;
+    align-items: center;
+}
+
+.header h1 {
+    margin-right: auto;
+    line-height: 1.1;
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    text-decoration: none;
+    color: rgb(250, 235, 153);
+    font-size: 24px;
+    font-weight: 500;
+}
+
+.header nav{
+    display: flex;
+    align-items: center;
+}
+
+.main-nav__list {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    z-index: 1000;
+    top: 0;
+    right: -100%;
+    min-height: 100vh;
+    width: 300px;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(13, 104, 104, .7);
+    transition: visibility .3s linear, right .3s linear;
+    visibility: hidden;
+}
+
+.main-nav__list.active {
+    visibility: visible;
+    right: 0;
+}
+
+
+.main-nav__list  li{
+    display: flex;
+    align-items: center;
+}
+.main-nav__list li:not(:last-child) {
+    margin-bottom: 10px;
+}
+
+.main-nav__list a {
+    display: inline-block;
+    color: rgb(250, 235, 153);
+    transition: transform .3s linear, color .3s linear;
+    padding: 5px 10px;
+    font-variant: small-caps;
+}
+
+.main-nav__list a:hover {
+    color: rgb(241, 217, 80);
+    transform: translateY(-2px);
+}
+
+.main-nav__button {
+    padding: 5px;
+    background-color: transparent;
+    border-radius: 10px;
+    border: none;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    z-index: 10000;
+    cursor: pointer;
+}
+
+
+
+.main-nav__button span {
+    position: relative;
+    display: block;
+    opacity: 1;
+    width: 25px;
+    height: 2px;
+    background-color: #fff;
+}
+
+.main-nav__button span::before {
+    content: "";
+    position: absolute;
+    top: -8px;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+
+}
+
+.main-nav__button span::after {
+    content: "";
+    position: absolute;
+    top: 8px;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+
+}
+
+.main-nav__button.active span {
+    background-color: transparent;
+}
+
+.main-nav__button.active span::before {
+    top: 0;
+    transform: rotate(225deg);
+}
+
+.main-nav__button.active span::after {
+    top: 0;
+    transform: rotate(-225deg);
+}
+
+
+
+
+
+
+/* about */
+.about {
+    padding-top: 80px;
+}
+
+
+/* media queries */
+
+
+@media  (min-width: 576px) {
+    .container {
+        max-width: 540px;
+    }
+}
+
+@media  (min-width: 576px) {
+    .container {
+        max-width: 540px;
+    }
+}
+
+@media  (min-width: 768px) {
+    .container {
+        max-width: 720px;
+    }
+}
+
+@media  (min-width: 992px) {
+    /* global */
+    body {
+        font-size: 18px;
+    }
+
+    figcaption {
+        font-size: 16px;
+    }
+
+    .container {
+        max-width: 960px;
+    }
+
+    .img-container {
+        order: 1;
+        flex: 0 1 40%;
+    }
+    .img-reverse {
+        order: -1;
+    }
+    
+    .text-container {
+        flex: 0 1 50%;
+        
+    
+    }
+    
+    .img-container figure,
+    .img-container > img {
+        transform: rotateY(-30deg);
+    }
+
+    .img-container .reverse{
+        transform: rotateY(30deg);
+    }
+
+    /* navigation */
+
+    .main-nav__list {
+        position: relative;
+        right: 0;
+        visibility: visible;
+        flex-direction: row;
+        min-height: auto;
+        width: auto;
+    }
+    
+    
+    .main-nav__list li:not(:last-child) {
+        margin-right: 10px;
+        margin-bottom: 0;
+    }
+    
+    
+    .main-nav__button {
+        display: none;
+    }
+    
+    
+    
+}
+
+@media  (min-width: 1200px) {
+    .container {
+        max-width: 1140px;
+    }
+}
+
+@media  (min-width: 1400px) {
+    .container {
+        max-width: 1320px;
+    }
+}
